@@ -17,7 +17,9 @@ func HasDuplicate(nums []int) bool {
 	return false
 }
 ```
-- This is O(n^2)
+
+- This I believe is O(n^2)
+    - But yeah this isn't optimal, im assuming the optimal one is somethin with a hashmap
 
 ### Better approach 1:
 To sort the array first, because say we have
@@ -29,10 +31,10 @@ in this case, when we loop the sorted array from index 0 to 5, we need to check 
 (sorted[current_idx + 1] == sorted[current_idx])? => if so, it contains duplicate
 ```
 - This is O(n log n), because it takes (n log n ) to sort the array first
-
+- Better, but it can probably get better
 
 ### Best approach (hashmap; surprise lol) 
-
+turns out the best approach is just, throwing a hashmap at the problem 
 ```go
 func HasDuplicateHashMap(nums []int) bool {
 	seen := make(map[int]int)
@@ -46,6 +48,7 @@ func HasDuplicateHashMap(nums []int) bool {
 	return false
 }
 ```
+- I believe this is just O(n) now, neat.
 
 ---
 
@@ -73,7 +76,6 @@ func IsAnagram(s, t string) bool {
     - Turns out i was right
 - Also turns out that anagrams need to have the same number of occurances for both the strings, didn't know that
 - Final Solution
-
 ```go
 func IsAnagram(s, t string) bool {
 	if len(s) != len(t) {
@@ -96,5 +98,8 @@ func IsAnagram(s, t string) bool {
 	return true
 }
 ```
+- I assume this is just `2*O(N)` so again thats just O(N)
+
+==pro tip, start with just throwing a hashmap at the problem xD==
 
 
